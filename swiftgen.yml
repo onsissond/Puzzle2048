@@ -1,0 +1,5 @@
+xcassets:
+  inputs: Puzzle2048/Resources/Assets.xcassets
+  outputs:
+    templateName: swift4
+    output: Puzzle2048/Resources/Assets.swift

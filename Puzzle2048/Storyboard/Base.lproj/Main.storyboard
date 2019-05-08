@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Puzzle2048" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GameViewController" customModule="Puzzle2048" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ri7-oZ-1UK">
-                                <rect key="frame" x="16" y="36" width="288" height="104"/>
+                                <rect key="frame" x="16" y="36" width="568" height="104"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWP-0c-Ib7">
                                         <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
@@ -46,10 +42,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfH-no-avu">
-                                        <rect key="frame" x="112" y="0.0" width="80" height="61"/>
+                                        <rect key="frame" x="112" y="0.0" width="220" height="61"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="SCORE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqg-Mb-p7V">
-                                                <rect key="frame" x="8" y="8" width="64" height="21"/>
+                                                <rect key="frame" x="8" y="8" width="204" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="vQM-Ix-92a"/>
                                                 </constraints>
@@ -58,7 +54,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcE-fm-ov7">
-                                                <rect key="frame" x="8" y="29" width="64" height="24"/>
+                                                <rect key="frame" x="8" y="29" width="204" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="psW-cq-IEe"/>
                                                 </constraints>
@@ -84,16 +80,16 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ll-ar-xaE">
-                                        <rect key="frame" x="200" y="0.0" width="80" height="61"/>
+                                        <rect key="frame" x="340" y="0.0" width="220" height="61"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6i-FA-BQO">
-                                                <rect key="frame" x="8" y="8" width="64" height="21"/>
+                                                <rect key="frame" x="8" y="8" width="204" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxn-ku-AoT">
-                                                <rect key="frame" x="8" y="29" width="64" height="24"/>
+                                                <rect key="frame" x="8" y="29" width="204" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -116,7 +112,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IjS-Lb-7Le" customClass="ColoredButton" customModule="Puzzle2048" customModuleProvider="target">
-                                        <rect key="frame" x="200" y="69" width="80" height="35"/>
+                                        <rect key="frame" x="340" y="69" width="220" height="35"/>
                                         <color key="backgroundColor" name="RedColor"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="UNDO">
@@ -132,7 +128,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvT-iM-eQ5" customClass="ColoredButton" customModule="Puzzle2048" customModuleProvider="target">
-                                        <rect key="frame" x="112" y="69" width="80" height="35"/>
+                                        <rect key="frame" x="112" y="69" width="220" height="35"/>
                                         <color key="backgroundColor" name="RedColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Eh2-Jn-bxm"/>
@@ -175,7 +171,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8b-kW-fgc">
-                                <rect key="frame" x="16" y="164" width="288" height="288"/>
+                                <rect key="frame" x="16" y="164" width="568" height="568"/>
                                 <color key="backgroundColor" name="BoardColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="j8b-kW-fgc" secondAttribute="height" multiplier="1:1" id="Uji-5d-XWm"/>
@@ -187,7 +183,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sukhanov Evgeny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhC-Ud-NQX">
-                                <rect key="frame" x="16" y="516" width="288" height="44"/>
+                                <rect key="frame" x="16" y="548" width="568" height="44"/>
                                 <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="37"/>
                                 <color key="textColor" name="BrownTextColor"/>
                                 <nil key="highlightedColor"/>

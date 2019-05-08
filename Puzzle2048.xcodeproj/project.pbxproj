@@ -8,13 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		52FEA2F7228349140074F405 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA2F6228349140074F405 /* AppDelegate.swift */; };
-		52FEA2F9228349140074F405 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA2F8228349140074F405 /* ViewController.swift */; };
+		52FEA2F9228349140074F405 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA2F8228349140074F405 /* GameViewController.swift */; };
 		52FEA2FC228349140074F405 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52FEA2FA228349140074F405 /* Main.storyboard */; };
 		52FEA2FE228349170074F405 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FEA2FD228349170074F405 /* Assets.xcassets */; };
 		52FEA301228349170074F405 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52FEA2FF228349170074F405 /* LaunchScreen.storyboard */; };
 		52FEA30C228349170074F405 /* Puzzle2048UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA30B228349170074F405 /* Puzzle2048UITests.swift */; };
 		52FEA31E22834EE10074F405 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA31D22834EE10074F405 /* UIViewExtensions.swift */; };
 		52FEA321228354B60074F405 /* ColoredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA320228354B60074F405 /* ColoredButton.swift */; };
+		52FEA325228372760074F405 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA324228372760074F405 /* TileView.swift */; };
+		52FEA3272283729A0074F405 /* AppearanceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA3262283729A0074F405 /* AppearanceProvider.swift */; };
+		52FEA32A2283780B0074F405 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 52FEA3292283780B0074F405 /* swiftgen.yml */; };
+		52FEA32C228378860074F405 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA32B228378860074F405 /* Assets.swift */; };
+		CB3C0379D81BB24A3F109777 /* Pods_Puzzle2048UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C697B077EB20E7E2A682AE2 /* Pods_Puzzle2048UITests.framework */; };
+		F6CCA0F3B30B7FCB8DF6BC42 /* Pods_Puzzle2048.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A7861AA9C70BE3EDA09CBCE /* Pods_Puzzle2048.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,9 +34,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C697B077EB20E7E2A682AE2 /* Pods_Puzzle2048UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Puzzle2048UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24714A6DA6AF42D9E0C9DB0F /* Pods-Puzzle2048.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Puzzle2048.release.xcconfig"; path = "Target Support Files/Pods-Puzzle2048/Pods-Puzzle2048.release.xcconfig"; sourceTree = "<group>"; };
+		2A7861AA9C70BE3EDA09CBCE /* Pods_Puzzle2048.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Puzzle2048.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D75BFDE1CFA73965CB9AE4D /* Pods-Puzzle2048.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Puzzle2048.debug.xcconfig"; path = "Target Support Files/Pods-Puzzle2048/Pods-Puzzle2048.debug.xcconfig"; sourceTree = "<group>"; };
 		52FEA2F3228349140074F405 /* Puzzle2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Puzzle2048.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52FEA2F6228349140074F405 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		52FEA2F8228349140074F405 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		52FEA2F8228349140074F405 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		52FEA2FB228349140074F405 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		52FEA2FD228349170074F405 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52FEA300228349170074F405 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +50,12 @@
 		52FEA30D228349170074F405 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52FEA31D22834EE10074F405 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		52FEA320228354B60074F405 /* ColoredButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredButton.swift; sourceTree = "<group>"; };
+		52FEA324228372760074F405 /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
+		52FEA3262283729A0074F405 /* AppearanceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceProvider.swift; sourceTree = "<group>"; };
+		52FEA3292283780B0074F405 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = swiftgen.yml; sourceTree = SOURCE_ROOT; };
+		52FEA32B228378860074F405 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		6EF751797D6C3E4D53DB2392 /* Pods-Puzzle2048UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Puzzle2048UITests.release.xcconfig"; path = "Target Support Files/Pods-Puzzle2048UITests/Pods-Puzzle2048UITests.release.xcconfig"; sourceTree = "<group>"; };
+		882871D019776A1D13AD5F5D /* Pods-Puzzle2048UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Puzzle2048UITests.debug.xcconfig"; path = "Target Support Files/Pods-Puzzle2048UITests/Pods-Puzzle2048UITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6CCA0F3B30B7FCB8DF6BC42 /* Pods_Puzzle2048.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,18 +71,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3C0379D81BB24A3F109777 /* Pods_Puzzle2048UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		468D6046DAFEF808C8731547 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A7861AA9C70BE3EDA09CBCE /* Pods_Puzzle2048.framework */,
+				0C697B077EB20E7E2A682AE2 /* Pods_Puzzle2048UITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		52FEA2EA228349140074F405 = {
 			isa = PBXGroup;
 			children = (
 				52FEA2F5228349140074F405 /* Puzzle2048 */,
 				52FEA30A228349170074F405 /* Puzzle2048UITests */,
 				52FEA2F4228349140074F405 /* Products */,
+				91F314DA395E05EA2D87B2A2 /* Pods */,
+				468D6046DAFEF808C8731547 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,11 +110,13 @@
 		52FEA2F5228349140074F405 /* Puzzle2048 */ = {
 			isa = PBXGroup;
 			children = (
-				52FEA31B22834ECD0074F405 /* Core */,
-				52FEA31A2283495B0074F405 /* Storyboard */,
-				52FEA318228349410074F405 /* Modules */,
-				52FEA317228349350074F405 /* Resources */,
 				52FEA3162283491B0074F405 /* Application */,
+				52FEA31B22834ECD0074F405 /* Core */,
+				52FEA323228372480074F405 /* Models */,
+				52FEA317228349350074F405 /* Resources */,
+				52FEA31A2283495B0074F405 /* Storyboard */,
+				52FEA318228349410074F405 /* ViewControllers */,
+				52FEA322228372430074F405 /* Views */,
 			);
 			path = Puzzle2048;
 			sourceTree = "<group>";
@@ -102,6 +133,7 @@
 		52FEA3162283491B0074F405 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				52FEA3292283780B0074F405 /* swiftgen.yml */,
 				52FEA2F6228349140074F405 /* AppDelegate.swift */,
 				52FEA302228349170074F405 /* Info.plist */,
 			);
@@ -111,25 +143,18 @@
 		52FEA317228349350074F405 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				52FEA32B228378860074F405 /* Assets.swift */,
 				52FEA2FD228349170074F405 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		52FEA318228349410074F405 /* Modules */ = {
+		52FEA318228349410074F405 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				52FEA3192283494D0074F405 /* Game */,
+				52FEA2F8228349140074F405 /* GameViewController.swift */,
 			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
-		52FEA3192283494D0074F405 /* Game */ = {
-			isa = PBXGroup;
-			children = (
-				52FEA2F8228349140074F405 /* ViewController.swift */,
-			);
-			path = Game;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		52FEA31A2283495B0074F405 /* Storyboard */ = {
@@ -166,6 +191,33 @@
 			path = CommonViews;
 			sourceTree = "<group>";
 		};
+		52FEA322228372430074F405 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				52FEA324228372760074F405 /* TileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		52FEA323228372480074F405 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				52FEA3262283729A0074F405 /* AppearanceProvider.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		91F314DA395E05EA2D87B2A2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3D75BFDE1CFA73965CB9AE4D /* Pods-Puzzle2048.debug.xcconfig */,
+				24714A6DA6AF42D9E0C9DB0F /* Pods-Puzzle2048.release.xcconfig */,
+				882871D019776A1D13AD5F5D /* Pods-Puzzle2048UITests.debug.xcconfig */,
+				6EF751797D6C3E4D53DB2392 /* Pods-Puzzle2048UITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,6 +225,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52FEA310228349170074F405 /* Build configuration list for PBXNativeTarget "Puzzle2048" */;
 			buildPhases = (
+				4F503DB7C1B54B855A3D7BBE /* [CP] Check Pods Manifest.lock */,
+				52FEA328228377400074F405 /* SwiftGen */,
 				52FEA2EF228349140074F405 /* Sources */,
 				52FEA2F0228349140074F405 /* Frameworks */,
 				52FEA2F1228349140074F405 /* Resources */,
@@ -190,6 +244,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52FEA313228349170074F405 /* Build configuration list for PBXNativeTarget "Puzzle2048UITests" */;
 			buildPhases = (
+				7B54913D1733AB4F7214A29C /* [CP] Check Pods Manifest.lock */,
 				52FEA303228349170074F405 /* Sources */,
 				52FEA304228349170074F405 /* Frameworks */,
 				52FEA305228349170074F405 /* Resources */,
@@ -250,6 +305,7 @@
 				52FEA301228349170074F405 /* LaunchScreen.storyboard in Resources */,
 				52FEA2FE228349170074F405 /* Assets.xcassets in Resources */,
 				52FEA2FC228349140074F405 /* Main.storyboard in Resources */,
+				52FEA32A2283780B0074F405 /* swiftgen.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,14 +318,82 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4F503DB7C1B54B855A3D7BBE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Puzzle2048-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52FEA328228377400074F405 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftgen >/dev/null; then\n$PODS_ROOT/SwiftGen/bin/swiftgen\nelse\necho \"warning: SwiftGen not installed, download from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+		};
+		7B54913D1733AB4F7214A29C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Puzzle2048UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		52FEA2EF228349140074F405 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52FEA2F9228349140074F405 /* ViewController.swift in Sources */,
+				52FEA2F9228349140074F405 /* GameViewController.swift in Sources */,
+				52FEA32C228378860074F405 /* Assets.swift in Sources */,
 				52FEA31E22834EE10074F405 /* UIViewExtensions.swift in Sources */,
+				52FEA3272283729A0074F405 /* AppearanceProvider.swift in Sources */,
 				52FEA321228354B60074F405 /* ColoredButton.swift in Sources */,
+				52FEA325228372760074F405 /* TileView.swift in Sources */,
 				52FEA2F7228349140074F405 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +554,7 @@
 		};
 		52FEA311228349170074F405 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D75BFDE1CFA73965CB9AE4D /* Pods-Puzzle2048.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -448,6 +573,7 @@
 		};
 		52FEA312228349170074F405 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24714A6DA6AF42D9E0C9DB0F /* Pods-Puzzle2048.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -466,6 +592,7 @@
 		};
 		52FEA314228349170074F405 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 882871D019776A1D13AD5F5D /* Pods-Puzzle2048UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -486,6 +613,7 @@
 		};
 		52FEA315228349170074F405 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EF751797D6C3E4D53DB2392 /* Pods-Puzzle2048UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
