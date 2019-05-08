@@ -13,6 +13,7 @@
 		52FEA2FE228349170074F405 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FEA2FD228349170074F405 /* Assets.xcassets */; };
 		52FEA301228349170074F405 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52FEA2FF228349170074F405 /* LaunchScreen.storyboard */; };
 		52FEA30C228349170074F405 /* Puzzle2048UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA30B228349170074F405 /* Puzzle2048UITests.swift */; };
+		52FEA31E22834EE10074F405 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA31D22834EE10074F405 /* UIViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		52FEA307228349170074F405 /* Puzzle2048UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Puzzle2048UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52FEA30B228349170074F405 /* Puzzle2048UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle2048UITests.swift; sourceTree = "<group>"; };
 		52FEA30D228349170074F405 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52FEA31D22834EE10074F405 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +79,11 @@
 		52FEA2F5228349140074F405 /* Puzzle2048 */ = {
 			isa = PBXGroup;
 			children = (
-				52FEA2F6228349140074F405 /* AppDelegate.swift */,
-				52FEA2F8228349140074F405 /* ViewController.swift */,
-				52FEA2FA228349140074F405 /* Main.storyboard */,
-				52FEA2FD228349170074F405 /* Assets.xcassets */,
-				52FEA2FF228349170074F405 /* LaunchScreen.storyboard */,
-				52FEA302228349170074F405 /* Info.plist */,
+				52FEA31B22834ECD0074F405 /* Core */,
+				52FEA31A2283495B0074F405 /* Storyboard */,
+				52FEA318228349410074F405 /* Modules */,
+				52FEA317228349350074F405 /* Resources */,
+				52FEA3162283491B0074F405 /* Application */,
 			);
 			path = Puzzle2048;
 			sourceTree = "<group>";
@@ -94,6 +95,64 @@
 				52FEA30D228349170074F405 /* Info.plist */,
 			);
 			path = Puzzle2048UITests;
+			sourceTree = "<group>";
+		};
+		52FEA3162283491B0074F405 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				52FEA2F6228349140074F405 /* AppDelegate.swift */,
+				52FEA302228349170074F405 /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		52FEA317228349350074F405 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				52FEA2FD228349170074F405 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		52FEA318228349410074F405 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				52FEA3192283494D0074F405 /* Game */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		52FEA3192283494D0074F405 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				52FEA2F8228349140074F405 /* ViewController.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		52FEA31A2283495B0074F405 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				52FEA2FA228349140074F405 /* Main.storyboard */,
+				52FEA2FF228349170074F405 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		52FEA31B22834ECD0074F405 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				52FEA31C22834ED20074F405 /* Extensions */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		52FEA31C22834ED20074F405 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				52FEA31D22834EE10074F405 /* UIViewExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52FEA2F9228349140074F405 /* ViewController.swift in Sources */,
+				52FEA31E22834EE10074F405 /* UIViewExtensions.swift in Sources */,
 				52FEA2F7228349140074F405 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,7 +422,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RJA87JMM57;
-				INFOPLIST_FILE = Puzzle2048/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Puzzle2048/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -370,7 +430,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.se.Puzzle2048;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -380,7 +440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RJA87JMM57;
-				INFOPLIST_FILE = Puzzle2048/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Puzzle2048/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -388,7 +448,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.se.Puzzle2048;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
