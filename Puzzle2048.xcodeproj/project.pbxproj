@@ -14,6 +14,7 @@
 		52FEA301228349170074F405 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52FEA2FF228349170074F405 /* LaunchScreen.storyboard */; };
 		52FEA30C228349170074F405 /* Puzzle2048UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA30B228349170074F405 /* Puzzle2048UITests.swift */; };
 		52FEA31E22834EE10074F405 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA31D22834EE10074F405 /* UIViewExtensions.swift */; };
+		52FEA321228354B60074F405 /* ColoredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA320228354B60074F405 /* ColoredButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		52FEA30B228349170074F405 /* Puzzle2048UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle2048UITests.swift; sourceTree = "<group>"; };
 		52FEA30D228349170074F405 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52FEA31D22834EE10074F405 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		52FEA320228354B60074F405 /* ColoredButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 		52FEA31B22834ECD0074F405 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				52FEA31F2283549F0074F405 /* CommonViews */,
 				52FEA31C22834ED20074F405 /* Extensions */,
 			);
 			path = Core;
@@ -153,6 +156,14 @@
 				52FEA31D22834EE10074F405 /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		52FEA31F2283549F0074F405 /* CommonViews */ = {
+			isa = PBXGroup;
+			children = (
+				52FEA320228354B60074F405 /* ColoredButton.swift */,
+			);
+			path = CommonViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +269,7 @@
 			files = (
 				52FEA2F9228349140074F405 /* ViewController.swift in Sources */,
 				52FEA31E22834EE10074F405 /* UIViewExtensions.swift in Sources */,
+				52FEA321228354B60074F405 /* ColoredButton.swift in Sources */,
 				52FEA2F7228349140074F405 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
