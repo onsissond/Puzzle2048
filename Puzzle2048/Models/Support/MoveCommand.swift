@@ -9,5 +9,5 @@
 import Foundation
 
 struct MoveCommand {
-    let direction : MoveDirection
+    let direction: MoveDirection
 }

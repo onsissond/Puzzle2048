@@ -80,7 +80,7 @@ final class GameViewController: UIViewController {
         present(alert, animated: true)
     }
 
-    private func showLostAlert() {
+    private func showFailAlert() {
         let alert = UIAlertController(title: "Defeat", message: "You lost...", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         present(alert, animated: true)
@@ -159,5 +159,11 @@ extension GameViewController {
 }
 
 extension GameViewController: GameSessionDelegate {
-    
+    func win() {
+        showWinAlert()
+    }
+
+    func lose() {
+        showFailAlert()
+    }
 }

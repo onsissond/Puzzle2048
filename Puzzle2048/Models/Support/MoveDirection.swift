@@ -6,6 +6,6 @@
 //  Copyright © 2019 Евгений Суханов. All rights reserved.
 //
 
-enum MoveDirection {
+enum MoveDirection: CaseIterable {
     case up, down, left, right
 }

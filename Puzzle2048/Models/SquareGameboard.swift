@@ -8,8 +8,8 @@
 
 struct SquareGameboard<T> {
 
-    let dimension : Int
-    var boardArray : [[T]]
+    let dimension: Int
+    var boardArray: [[T]]
 
     init(dimension d: Int, initialValue: T) {
         dimension = d

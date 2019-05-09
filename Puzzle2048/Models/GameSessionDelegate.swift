@@ -9,4 +9,6 @@
 import Foundation
 
 protocol GameSessionDelegate: class {
+    func win()
+    func lose()
 }

@@ -53,9 +53,14 @@ final class GameSessionImp: GameSession {
 
     func addCommand(_ command: MoveCommand) {
         let changes = performMove(direction: command.direction)
+        if checkWin() {
+            delegate.win()
+            return
+        }
         if changes {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                self.insertTileAtRandomLocation(withValue: Int.random(in: 0..<10) == 1 ? 4 : 2)
+            insertTileAtRandomLocation(withValue: Int.random(in: 0..<10) == 1 ? 4 : 2)
+            if checkLose() {
+                delegate.lose()
             }
         }
     }
@@ -97,72 +102,63 @@ extension GameSessionImp {
                 changes = true
             }
         }
+
         return changes
     }
 
     private func newPositionForTile(currentPosition: TilePosition, direction: MoveDirection, value: inout Int) -> TilePosition {
+
+        var rowCursor = currentPosition.row
+        var columnCursor = currentPosition.column
+
         switch direction {
         case .up:
-            var rowCursor = currentPosition.row
-            while rowCursor - 1 >= 0 {
-                let nextPosition = TilePosition(row: rowCursor - 1, column: currentPosition.column)
-                if canMove(value: value, nextPosition: nextPosition) {
-                    rowCursor -= 1
-                    if gameboardModel[nextPosition] == .tile(value) {
-                        value *= 2
-                    }
-                } else {
+            var nextPosition = TilePosition(row: rowCursor - 1, column: currentPosition.column)
+            while canMove(value: value, nextPosition: nextPosition) {
+                rowCursor -= 1
+                if gameboardModel[nextPosition] == .tile(value) {
+                    value *= 2
                     break
                 }
+                nextPosition = TilePosition(row: rowCursor - 1, column: currentPosition.column)
             }
-            return TilePosition(row: rowCursor, column: currentPosition.column)
         case .down:
-            var rowCursor = currentPosition.row
-            while rowCursor + 1 < dimension {
-                let nextPosition = TilePosition(row: rowCursor + 1, column: currentPosition.column)
-                if canMove(value: value, nextPosition: nextPosition) {
-                    rowCursor += 1
-                    if gameboardModel[nextPosition] == .tile(value) {
-                        value *= 2
-                    }
-                } else {
+            var nextPosition = TilePosition(row: rowCursor + 1, column: currentPosition.column)
+            while canMove(value: value, nextPosition: nextPosition) {
+                rowCursor += 1
+                if gameboardModel[nextPosition] == .tile(value) {
+                    value *= 2
                     break
                 }
+                nextPosition = TilePosition(row: rowCursor + 1, column: currentPosition.column)
             }
-            return TilePosition(row: rowCursor, column: currentPosition.column)
         case .left:
-            var columnCursor = currentPosition.column
-            while columnCursor - 1 >= 0 {
-                let nextPosition = TilePosition(row: currentPosition.row, column: columnCursor - 1)
-                if canMove(value: value, nextPosition: nextPosition) {
-                    columnCursor -= 1
-                    if gameboardModel[nextPosition] == .tile(value) {
-                        value *= 2
-                    }
-                } else {
+            var nextPosition = TilePosition(row: currentPosition.row, column: columnCursor - 1)
+            while canMove(value: value, nextPosition: nextPosition) {
+                columnCursor -= 1
+                if gameboardModel[nextPosition] == .tile(value) {
+                    value *= 2
                     break
                 }
+                nextPosition = TilePosition(row: currentPosition.row, column: columnCursor - 1)
             }
-            return TilePosition(row: currentPosition.row, column: columnCursor)
         case .right:
-            var columnCursor = currentPosition.column
-            while columnCursor + 1 < dimension {
-                let nextPosition = TilePosition(row: currentPosition.row, column: columnCursor + 1)
-                if canMove(value: value, nextPosition: nextPosition) {
-                    columnCursor += 1
-                    if gameboardModel[nextPosition] == .tile(value) {
-                        value *= 2
-                    }
-                } else {
+            var nextPosition = TilePosition(row: currentPosition.row, column: columnCursor + 1)
+            while canMove(value: value, nextPosition: nextPosition) {
+                columnCursor += 1
+                if gameboardModel[nextPosition] == .tile(value) {
+                    value *= 2
                     break
                 }
+                nextPosition = TilePosition(row: currentPosition.row, column: columnCursor + 1)
             }
-            return TilePosition(row: currentPosition.row, column: columnCursor)
         }
+        return TilePosition(row: rowCursor, column: columnCursor)
     }
 
     private func canMove(value: Int, nextPosition: TilePosition) -> Bool {
         return nextPosition.column < dimension && nextPosition.row < dimension &&
+            nextPosition.column >= 0 && nextPosition.row >= 0 &&
             (gameboardModel[nextPosition] == .empty || gameboardModel[nextPosition] == .tile(value))
     }
 
@@ -174,5 +170,29 @@ extension GameSessionImp {
             }
         }
         return positions
+    }
+
+    private func checkWin() -> Bool {
+        for position in positions {
+            if gameboardModel[position] == .tile(threshold) {
+                return true
+            }
+        }
+        return false
+    }
+
+    private func checkLose() -> Bool {
+        if gameboardEmptySpots().isEmpty {
+            for position in positions {
+                if case .tile(var value) = gameboardModel[position] {
+                    for direction in MoveDirection.allCases {
+                        if newPositionForTile(currentPosition: position, direction: direction, value: &value) != position {
+                            return false
+                        }
+                    }
+                }
+            }
+        }
+        return gameboardEmptySpots().isEmpty
     }
 }

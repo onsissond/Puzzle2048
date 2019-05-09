@@ -12,7 +12,7 @@ final class AnimationEngine {
 
     private let tilePopStartScale: CGFloat = 0.1
     private let tilePopMaxScale: CGFloat = 1.1
-    private let tilePopDelay: TimeInterval = 0.05
+    private let tilePopDelay: TimeInterval = 0.1
     private let tileExpandTime: TimeInterval = 0.18
     private let tileContractTime: TimeInterval = 0.08
 
@@ -47,9 +47,9 @@ final class AnimationEngine {
         }, completion: { finished in
             startTile.value = value
             endTile?.removeFromSuperview()
-
-            if !shouldPop { return }
-
+            if !shouldPop || !finished {
+                return
+            }
             startTile.layer.setAffineTransform(CGAffineTransform(scaleX: self.tileMergeStartScale, y: self.tileMergeStartScale))
             // Pop tile
             UIView.animate(withDuration: self.tileMergeExpandTime,
