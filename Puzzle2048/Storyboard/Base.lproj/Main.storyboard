@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,11 +15,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="GameViewController" customModule="Puzzle2048" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ri7-oZ-1UK">
-                                <rect key="frame" x="16" y="36" width="568" height="104"/>
+                                <rect key="frame" x="16" y="36" width="382" height="104"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWP-0c-Ib7">
                                         <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
@@ -28,7 +31,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" name="PrimaryColor"/>
+                                        <color key="backgroundColor" red="0.84449094533920288" green="0.74698799848556519" blue="0.33714830875396729" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="PV4-ge-uKV" secondAttribute="trailing" constant="8" id="5DM-s0-MxH"/>
                                             <constraint firstItem="PV4-ge-uKV" firstAttribute="leading" secondItem="OWP-0c-Ib7" secondAttribute="leading" constant="8" id="NNj-sM-lbQ"/>
@@ -42,10 +45,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfH-no-avu">
-                                        <rect key="frame" x="112" y="0.0" width="220" height="61"/>
+                                        <rect key="frame" x="112" y="0.0" width="127" height="61"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="SCORE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqg-Mb-p7V">
-                                                <rect key="frame" x="8" y="8" width="204" height="21"/>
+                                                <rect key="frame" x="8" y="8" width="111" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="vQM-Ix-92a"/>
                                                 </constraints>
@@ -54,7 +57,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcE-fm-ov7">
-                                                <rect key="frame" x="8" y="29" width="204" height="24"/>
+                                                <rect key="frame" x="8" y="29" width="111" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="psW-cq-IEe"/>
                                                 </constraints>
@@ -63,7 +66,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" name="SecondaryColor"/>
+                                        <color key="backgroundColor" red="0.23117321729660034" green="0.22792041301727295" blue="0.20391830801963806" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Jqg-Mb-p7V" secondAttribute="trailing" constant="8" id="Bl9-XU-o3F"/>
                                             <constraint firstItem="fcE-fm-ov7" firstAttribute="top" secondItem="Jqg-Mb-p7V" secondAttribute="bottom" id="C4C-Ri-rZs"/>
@@ -80,22 +83,22 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ll-ar-xaE">
-                                        <rect key="frame" x="340" y="0.0" width="220" height="61"/>
+                                        <rect key="frame" x="247" y="0.0" width="127" height="61"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6i-FA-BQO">
-                                                <rect key="frame" x="8" y="8" width="204" height="21"/>
+                                                <rect key="frame" x="8" y="8" width="111" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxn-ku-AoT">
-                                                <rect key="frame" x="8" y="29" width="204" height="24"/>
+                                                <rect key="frame" x="8" y="29" width="111" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" name="SecondaryColor"/>
+                                        <color key="backgroundColor" red="0.23117321729660034" green="0.22792041301727295" blue="0.20391830801963806" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Qxn-ku-AoT" secondAttribute="trailing" constant="8" id="01H-lb-Ak5"/>
                                             <constraint firstItem="Qxn-ku-AoT" firstAttribute="top" secondItem="r6i-FA-BQO" secondAttribute="bottom" id="0qd-tB-Pgx"/>
@@ -112,8 +115,8 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IjS-Lb-7Le" customClass="ColoredButton" customModule="Puzzle2048" customModuleProvider="target">
-                                        <rect key="frame" x="340" y="69" width="220" height="35"/>
-                                        <color key="backgroundColor" name="RedColor"/>
+                                        <rect key="frame" x="247" y="69" width="127" height="35"/>
+                                        <color key="backgroundColor" red="0.83663052320480347" green="0.43766626715660095" blue="0.32153195142745972" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="UNDO">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -128,8 +131,8 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvT-iM-eQ5" customClass="ColoredButton" customModule="Puzzle2048" customModuleProvider="target">
-                                        <rect key="frame" x="112" y="69" width="220" height="35"/>
-                                        <color key="backgroundColor" name="RedColor"/>
+                                        <rect key="frame" x="112" y="69" width="127" height="35"/>
+                                        <color key="backgroundColor" red="0.83663052320480347" green="0.43766626715660095" blue="0.32153195142745972" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Eh2-Jn-bxm"/>
                                         </constraints>
@@ -170,9 +173,9 @@
                                     <constraint firstItem="gvT-iM-eQ5" firstAttribute="leading" secondItem="RfH-no-avu" secondAttribute="leading" id="snW-fy-PWk"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8b-kW-fgc">
-                                <rect key="frame" x="16" y="164" width="568" height="568"/>
-                                <color key="backgroundColor" name="BoardColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8b-kW-fgc" customClass="GameboardView" customModule="Puzzle2048" customModuleProvider="target">
+                                <rect key="frame" x="16" y="164" width="382" height="382"/>
+                                <color key="backgroundColor" red="0.61501973867416382" green="0.57358628511428833" blue="0.52156084775924683" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="j8b-kW-fgc" secondAttribute="height" multiplier="1:1" id="Uji-5d-XWm"/>
                                 </constraints>
@@ -183,50 +186,38 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sukhanov Evgeny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhC-Ud-NQX">
-                                <rect key="frame" x="16" y="548" width="568" height="44"/>
+                                <rect key="frame" x="16" y="684" width="382" height="44"/>
                                 <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="37"/>
-                                <color key="textColor" name="BrownTextColor"/>
+                                <color key="textColor" red="0.72097325325012207" green="0.6952289342880249" blue="0.63920789957046509" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundColor"/>
+                        <color key="backgroundColor" red="0.98010295629501343" green="0.97318631410598755" blue="0.94117313623428345" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="ri7-oZ-1UK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="1Md-nN-FGb"/>
-                            <constraint firstItem="j8b-kW-fgc" firstAttribute="trailing" secondItem="ri7-oZ-1UK" secondAttribute="trailing" id="789-Be-ek9"/>
+                            <constraint firstItem="j8b-kW-fgc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="1Qm-he-8um"/>
+                            <constraint firstItem="QhC-Ud-NQX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="j8b-kW-fgc" secondAttribute="bottom" constant="16" id="8G1-yU-Nrp"/>
                             <constraint firstItem="ri7-oZ-1UK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="F1y-z3-038"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QhC-Ud-NQX" secondAttribute="trailing" constant="16" id="QQr-Ho-g9z"/>
                             <constraint firstItem="j8b-kW-fgc" firstAttribute="top" secondItem="ri7-oZ-1UK" secondAttribute="bottom" constant="24" id="TyY-b7-U6R"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ri7-oZ-1UK" secondAttribute="trailing" constant="16" id="UxQ-dN-UHB"/>
                             <constraint firstItem="QhC-Ud-NQX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="bkG-dd-LxW"/>
-                            <constraint firstItem="j8b-kW-fgc" firstAttribute="leading" secondItem="ri7-oZ-1UK" secondAttribute="leading" id="gfR-So-b2c"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QhC-Ud-NQX" secondAttribute="bottom" constant="8" id="ufJ-u2-RjI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j8b-kW-fgc" secondAttribute="trailing" constant="16" id="zo5-1N-qgT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="gameboardView" destination="j8b-kW-fgc" id="lsQ-gi-JBx"/>
+                        <outlet property="recordLabel" destination="Qxn-ku-AoT" id="tCv-J0-mfg"/>
+                        <outlet property="scoreLabel" destination="fcE-fm-ov7" id="SxN-vC-okG"/>
+                        <outlet property="startButton" destination="gvT-iM-eQ5" id="uJr-5j-fcF"/>
+                        <outlet property="undoButton" destination="IjS-Lb-7Le" id="oza-Ux-DRo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138.75" y="129.92957746478874"/>
+            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
         </scene>
     </scenes>
-    <resources>
-        <namedColor name="BackgroundColor">
-            <color red="0.98039215686274506" green="0.97254901960784312" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="BoardColor">
-            <color red="0.62352941176470589" green="0.5725490196078431" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="BrownTextColor">
-            <color red="0.72549019607843135" green="0.68627450980392157" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="PrimaryColor">
-            <color red="0.86274509803921573" green="0.74117647058823533" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="RedColor">
-            <color red="0.89803921568627454" green="0.40784313725490196" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SecondaryColor">
-            <color red="0.23137254901960785" green="0.22745098039215686" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

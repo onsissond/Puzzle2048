@@ -18,7 +18,8 @@
 		52FEA325228372760074F405 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA324228372760074F405 /* TileView.swift */; };
 		52FEA3272283729A0074F405 /* AppearanceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA3262283729A0074F405 /* AppearanceProvider.swift */; };
 		52FEA32A2283780B0074F405 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 52FEA3292283780B0074F405 /* swiftgen.yml */; };
-		52FEA32C228378860074F405 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA32B228378860074F405 /* Assets.swift */; };
+		52FEA33022840FF00074F405 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA32F22840FF00074F405 /* Constants.swift */; };
+		52FEA332228410440074F405 /* GameboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA331228410440074F405 /* GameboardView.swift */; };
 		CB3C0379D81BB24A3F109777 /* Pods_Puzzle2048UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C697B077EB20E7E2A682AE2 /* Pods_Puzzle2048UITests.framework */; };
 		F6CCA0F3B30B7FCB8DF6BC42 /* Pods_Puzzle2048.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A7861AA9C70BE3EDA09CBCE /* Pods_Puzzle2048.framework */; };
 /* End PBXBuildFile section */
@@ -53,7 +54,8 @@
 		52FEA324228372760074F405 /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 		52FEA3262283729A0074F405 /* AppearanceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceProvider.swift; sourceTree = "<group>"; };
 		52FEA3292283780B0074F405 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = swiftgen.yml; sourceTree = SOURCE_ROOT; };
-		52FEA32B228378860074F405 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		52FEA32F22840FF00074F405 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		52FEA331228410440074F405 /* GameboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameboardView.swift; sourceTree = "<group>"; };
 		6EF751797D6C3E4D53DB2392 /* Pods-Puzzle2048UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Puzzle2048UITests.release.xcconfig"; path = "Target Support Files/Pods-Puzzle2048UITests/Pods-Puzzle2048UITests.release.xcconfig"; sourceTree = "<group>"; };
 		882871D019776A1D13AD5F5D /* Pods-Puzzle2048UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Puzzle2048UITests.debug.xcconfig"; path = "Target Support Files/Pods-Puzzle2048UITests/Pods-Puzzle2048UITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,8 +145,8 @@
 		52FEA317228349350074F405 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				52FEA32B228378860074F405 /* Assets.swift */,
 				52FEA2FD228349170074F405 /* Assets.xcassets */,
+				52FEA32F22840FF00074F405 /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				52FEA324228372760074F405 /* TileView.swift */,
+				52FEA331228410440074F405 /* GameboardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -226,7 +229,6 @@
 			buildConfigurationList = 52FEA310228349170074F405 /* Build configuration list for PBXNativeTarget "Puzzle2048" */;
 			buildPhases = (
 				4F503DB7C1B54B855A3D7BBE /* [CP] Check Pods Manifest.lock */,
-				52FEA328228377400074F405 /* SwiftGen */,
 				52FEA2EF228349140074F405 /* Sources */,
 				52FEA2F0228349140074F405 /* Frameworks */,
 				52FEA2F1228349140074F405 /* Resources */,
@@ -341,24 +343,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		52FEA328228377400074F405 /* SwiftGen */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftGen;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftgen >/dev/null; then\n$PODS_ROOT/SwiftGen/bin/swiftgen\nelse\necho \"warning: SwiftGen not installed, download from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
-		};
 		7B54913D1733AB4F7214A29C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -389,10 +373,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				52FEA2F9228349140074F405 /* GameViewController.swift in Sources */,
-				52FEA32C228378860074F405 /* Assets.swift in Sources */,
 				52FEA31E22834EE10074F405 /* UIViewExtensions.swift in Sources */,
 				52FEA3272283729A0074F405 /* AppearanceProvider.swift in Sources */,
+				52FEA332228410440074F405 /* GameboardView.swift in Sources */,
 				52FEA321228354B60074F405 /* ColoredButton.swift in Sources */,
+				52FEA33022840FF00074F405 /* Constants.swift in Sources */,
 				52FEA325228372760074F405 /* TileView.swift in Sources */,
 				52FEA2F7228349140074F405 /* AppDelegate.swift in Sources */,
 			);
@@ -560,6 +545,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RJA87JMM57;
 				INFOPLIST_FILE = "$(SRCROOT)/Puzzle2048/Application/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -579,6 +565,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RJA87JMM57;
 				INFOPLIST_FILE = "$(SRCROOT)/Puzzle2048/Application/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
