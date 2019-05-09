@@ -9,23 +9,40 @@
 struct SquareGameboard<T> {
 
     let dimension : Int
-    var boardArray : [T]
+    var boardArray : [[T]]
 
     init(dimension d: Int, initialValue: T) {
         dimension = d
-        boardArray = [T](repeating: initialValue, count: d*d)
+        boardArray = [[T]](repeating: [T](repeating: initialValue, count: d), count: d)
+    }
+
+    subscript(position: TilePosition) -> T {
+        get {
+            let row = position.row
+            let column = position.column
+            assert(row >= 0 && row < dimension)
+            assert(column >= 0 && column < dimension)
+            return boardArray[row][column]
+        }
+        set {
+            let row = position.row
+            let column = position.column
+            assert(row >= 0 && row < dimension)
+            assert(column >= 0 && column < dimension)
+            boardArray[row][column] = newValue
+        }
     }
 
     subscript(row: Int, column: Int) -> T {
         get {
             assert(row >= 0 && row < dimension)
             assert(column >= 0 && column < dimension)
-            return boardArray[row * dimension + column]
+            return boardArray[column][row]
         }
         set {
             assert(row >= 0 && row < dimension)
             assert(column >= 0 && column < dimension)
-            boardArray[row * dimension + column] = newValue
+            boardArray[column][row] = newValue
         }
     }
 

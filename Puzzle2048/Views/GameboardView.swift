@@ -76,6 +76,7 @@ final class GameboardView: UIView {
         guard let startTile = tilesViewStorage.getTile(position: from) else {
             assert(false, "placeholder error")
         }
+
         let endTile = tilesViewStorage.getTile(position: to)
 
         // Make the frame

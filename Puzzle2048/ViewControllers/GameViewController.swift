@@ -57,6 +57,7 @@ final class GameViewController: UIViewController {
         configureUI()
         subscribeOnEvents()
         startButtonClicked()
+        setupSwipeControls()
     }
 
     private func subscribeOnEvents() {
@@ -73,6 +74,18 @@ final class GameViewController: UIViewController {
         view.setNeedsUpdateConstraints()
     }
 
+    private func showWinAlert() {
+        let alert = UIAlertController(title: "Victory", message: "You won!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        present(alert, animated: true)
+    }
+
+    private func showLostAlert() {
+        let alert = UIAlertController(title: "Defeat", message: "You lost...", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        present(alert, animated: true)
+    }
+
     @objc
     func startButtonClicked() {
         currentGameSession?.finishGame()
@@ -82,6 +95,28 @@ final class GameViewController: UIViewController {
                                                       gameboardView: gameboardView)
         gameSession.startGame()
         currentGameSession = gameSession
+    }
+
+    func setupSwipeControls() {
+        let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(upCommand))
+        upSwipe.numberOfTouchesRequired = 1
+        upSwipe.direction = .up
+        view.addGestureRecognizer(upSwipe)
+
+        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(downCommand))
+        downSwipe.numberOfTouchesRequired = 1
+        downSwipe.direction = .down
+        view.addGestureRecognizer(downSwipe)
+
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(leftCommand))
+        leftSwipe.numberOfTouchesRequired = 1
+        leftSwipe.direction = .left
+        view.addGestureRecognizer(leftSwipe)
+
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(rightCommand))
+        rightSwipe.numberOfTouchesRequired = 1
+        rightSwipe.direction = .right
+        view.addGestureRecognizer(rightSwipe)
     }
 
     override func updateViewConstraints() {
@@ -98,6 +133,28 @@ final class GameViewController: UIViewController {
         }
 
         super.updateViewConstraints()
+    }
+}
+
+extension GameViewController {
+    @objc
+    private func upCommand() {
+        currentGameSession?.addCommand(MoveCommand(direction: .up))
+    }
+
+    @objc
+    private func downCommand() {
+        currentGameSession?.addCommand(MoveCommand(direction: .down))
+    }
+
+    @objc
+    private func leftCommand() {
+        currentGameSession?.addCommand(MoveCommand(direction: .left))
+    }
+
+    @objc
+    private func rightCommand() {
+        currentGameSession?.addCommand(MoveCommand(direction: .right))
     }
 }
 

@@ -11,15 +11,19 @@ import Foundation
 protocol GameSession {
     func startGame()
     func finishGame()
+    func addCommand(_ command: MoveCommand)
 }
 
 final class GameSessionImp: GameSession {
 
-    private weak var delegate: GameSessionDelegate!
-    private weak var gameboardView: GameboardView!
     private let dimension: Int
     private let threshold: Int
+    private let maxCommands = 100
+    private weak var delegate: GameSessionDelegate!
+    private weak var gameboardView: GameboardView!
     private var gameboardModel: SquareGameboard<TileObject>
+    private var queue: [MoveCommand] = []
+    private var positions: [TilePosition] = []
 
     init(dimension: Int,
          threshold: Int,
@@ -30,6 +34,7 @@ final class GameSessionImp: GameSession {
         self.gameboardView = gameboardView
         delegate = gameSessionDelegate
         gameboardModel = SquareGameboard(dimension: dimension, initialValue: .empty)
+        positions = createPositions()
     }
 
     func startGame() {
@@ -46,19 +51,21 @@ final class GameSessionImp: GameSession {
         gameboardView.insertTile(position: position, value: value)
     }
 
-    func removeTile(position: TilePosition) {
-
+    func addCommand(_ command: MoveCommand) {
+        let changes = performMove(direction: command.direction)
+        if changes {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.insertTileAtRandomLocation(withValue: Int.random(in: 0..<10) == 1 ? 4 : 2)
+            }
+        }
     }
 }
 
 extension GameSessionImp {
     private func insertTileAtRandomLocation(withValue value: Int) {
         let openSpots = gameboardEmptySpots()
-        if openSpots.isEmpty {
-            // No more open spots; don't even bother
-            return
-        }
-        // Randomly select an open spot, and put a new tile there
+        if openSpots.isEmpty { return }
+
         let idx = Int.random(in: 0..<openSpots.count)
         let position = openSpots[idx]
         insertTile(position: position, value: value)
@@ -74,5 +81,98 @@ extension GameSessionImp {
             }
         }
         return buffer
+    }
+
+    private func performMove(direction: MoveDirection) -> Bool {
+        var changes = false
+        let positions = direction == .up || direction == .left ? self.positions : self.positions.reversed()
+        for currentPosition in positions {
+            if case .tile(var value) = gameboardModel[currentPosition] {
+                let newPosition = newPositionForTile(currentPosition: currentPosition, direction: direction, value: &value)
+
+                if currentPosition == newPosition { continue }
+                gameboardModel[currentPosition.column, currentPosition.row] = .empty
+                gameboardModel[newPosition.column, newPosition.row] = .tile(value)
+                gameboardView.moveOneTile(from: currentPosition, to: newPosition, value: value)
+                changes = true
+            }
+        }
+        return changes
+    }
+
+    private func newPositionForTile(currentPosition: TilePosition, direction: MoveDirection, value: inout Int) -> TilePosition {
+        switch direction {
+        case .up:
+            var rowCursor = currentPosition.row
+            while rowCursor - 1 >= 0 {
+                let nextPosition = TilePosition(row: rowCursor - 1, column: currentPosition.column)
+                if canMove(value: value, nextPosition: nextPosition) {
+                    rowCursor -= 1
+                    if gameboardModel[nextPosition] == .tile(value) {
+                        value *= 2
+                    }
+                } else {
+                    break
+                }
+            }
+            return TilePosition(row: rowCursor, column: currentPosition.column)
+        case .down:
+            var rowCursor = currentPosition.row
+            while rowCursor + 1 < dimension {
+                let nextPosition = TilePosition(row: rowCursor + 1, column: currentPosition.column)
+                if canMove(value: value, nextPosition: nextPosition) {
+                    rowCursor += 1
+                    if gameboardModel[nextPosition] == .tile(value) {
+                        value *= 2
+                    }
+                } else {
+                    break
+                }
+            }
+            return TilePosition(row: rowCursor, column: currentPosition.column)
+        case .left:
+            var columnCursor = currentPosition.column
+            while columnCursor - 1 >= 0 {
+                let nextPosition = TilePosition(row: currentPosition.row, column: columnCursor - 1)
+                if canMove(value: value, nextPosition: nextPosition) {
+                    columnCursor -= 1
+                    if gameboardModel[nextPosition] == .tile(value) {
+                        value *= 2
+                    }
+                } else {
+                    break
+                }
+            }
+            return TilePosition(row: currentPosition.row, column: columnCursor)
+        case .right:
+            var columnCursor = currentPosition.column
+            while columnCursor + 1 < dimension {
+                let nextPosition = TilePosition(row: currentPosition.row, column: columnCursor + 1)
+                if canMove(value: value, nextPosition: nextPosition) {
+                    columnCursor += 1
+                    if gameboardModel[nextPosition] == .tile(value) {
+                        value *= 2
+                    }
+                } else {
+                    break
+                }
+            }
+            return TilePosition(row: currentPosition.row, column: columnCursor)
+        }
+    }
+
+    private func canMove(value: Int, nextPosition: TilePosition) -> Bool {
+        return nextPosition.column < dimension && nextPosition.row < dimension &&
+            (gameboardModel[nextPosition] == .empty || gameboardModel[nextPosition] == .tile(value))
+    }
+
+    private func createPositions() -> [TilePosition] {
+        var positions: [TilePosition] = []
+        for i in 0..<dimension {
+            for j in 0..<dimension {
+                positions.append(TilePosition(row: i, column: j))
+            }
+        }
+        return positions
     }
 }

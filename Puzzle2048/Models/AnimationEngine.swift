@@ -23,6 +23,8 @@ final class AnimationEngine {
     private let perSquareSlideDuration: TimeInterval = 0.08
 
     func addTileToBoard(tile: UIView) {
+        tile.layer.setAffineTransform(CGAffineTransform(scaleX: tilePopStartScale, y: tilePopStartScale))
+
         UIView.animate(withDuration: tileExpandTime, delay: tilePopDelay, options: [], animations: {
             // Make the tile 'pop'
             tile.layer.setAffineTransform(CGAffineTransform(scaleX: self.tilePopMaxScale, y: self.tilePopMaxScale))
@@ -45,9 +47,9 @@ final class AnimationEngine {
         }, completion: { finished in
             startTile.value = value
             endTile?.removeFromSuperview()
-            if !shouldPop || !finished {
-                return
-            }
+
+            if !shouldPop { return }
+
             startTile.layer.setAffineTransform(CGAffineTransform(scaleX: self.tileMergeStartScale, y: self.tileMergeStartScale))
             // Pop tile
             UIView.animate(withDuration: self.tileMergeExpandTime,
