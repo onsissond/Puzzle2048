@@ -11,19 +11,26 @@ import UIKit
 @IBDesignable
 final class GameboardView: UIView {
 
-    @IBInspectable var dimension: Int = 4
-    @IBInspectable var tilePadding: CGFloat = 8
+    private let dimension: Int
+    private let tilePadding: CGFloat
+    private let tileSideLength: CGFloat
 
     private var appearanceProvider: AppearanceProvider = AppearanceProviderImp()
 
-    private var tileSideLength: CGFloat {
-        return (frame.width - CGFloat(dimension + 1) * tilePadding) / CGFloat(dimension)
+    init(dimension: Int,
+         tilePadding: CGFloat,
+         tileSideLength: CGFloat) {
+        self.dimension = dimension
+        self.tilePadding = tilePadding
+        self.tileSideLength = tileSideLength
+
+        super.init(frame: .zero)
+
+        configureUI()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-
-        configureUI()
+        fatalError("init(coder:) has not been implemented")
     }
 
     private func configureUI() {
@@ -59,11 +66,5 @@ final class GameboardView: UIView {
                             appearanceProvider: appearanceProvider)
         addSubview(tile)
         bringSubviewToFront(tile)
-    }
-
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-
-        configureUI()
     }
 }

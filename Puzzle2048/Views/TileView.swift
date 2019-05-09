@@ -10,6 +10,8 @@ import UIKit
 
 final class TileView: UIView {
 
+    private var needUpdateConstraints = true
+
     private weak var delegate: AppearanceProvider!
 
     var value: Int = 0 {
@@ -19,11 +21,13 @@ final class TileView: UIView {
     }
 
     private lazy var numberLabel: UILabel = {
-        let label = UILabel(frame: frame)
+        let label = UILabel()
         label.textAlignment = .center
-        label.minimumScaleFactor = 0.5
+        label.minimumScaleFactor = 0.2
         label.adjustsFontSizeToFitWidth = true
+        label.baselineAdjustment = .alignCenters
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
 
@@ -48,6 +52,7 @@ final class TileView: UIView {
 
     private func addSubviews() {
         addSubview(numberLabel)
+        setNeedsUpdateConstraints()
     }
 
     private func configureUI() {
@@ -56,12 +61,18 @@ final class TileView: UIView {
         numberLabel.text = "\(value)"
     }
 
-    override func updateConstraints() {
+    override func layoutSubviews() {
+        numberLabel.sizeToFit()
+    }
 
-        numberLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
-        numberLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        numberLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
-        numberLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+    override func updateConstraints() {
+        if needUpdateConstraints {
+            numberLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
+            numberLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
+            numberLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+
+            needUpdateConstraints = false
+        }
 
         super.updateConstraints()
     }
