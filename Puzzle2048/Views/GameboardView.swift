@@ -15,7 +15,9 @@ final class GameboardView: UIView {
     private let tilePadding: CGFloat
     private let tileSideLength: CGFloat
 
-    private var appearanceProvider: AppearanceProvider = AppearanceProviderImp()
+    private let appearanceProvider: AppearanceProvider = AppearanceProviderImp()
+    private let animationEngine = AnimationEngine()
+    private var tilesViewStorage = TilesViewStorage()
 
     init(dimension: Int,
          tilePadding: CGFloat,
@@ -56,9 +58,9 @@ final class GameboardView: UIView {
         addSubview(background)
     }
 
-    func insertTile(row: Int, column: Int, value: Int) {
-        let x = tilePadding + CGFloat(column) * (tileSideLength + tilePadding)
-        let y = tilePadding + CGFloat(row) * (tileSideLength + tilePadding)
+    func insertTile(position: TilePosition, value: Int) {
+        let x = tilePadding + CGFloat(position.column) * (tileSideLength + tilePadding)
+        let y = tilePadding + CGFloat(position.row) * (tileSideLength + tilePadding)
 
         let tile = TileView(position: CGPoint(x: x, y: y),
                             tileSideLength: tileSideLength,
@@ -66,5 +68,50 @@ final class GameboardView: UIView {
                             appearanceProvider: appearanceProvider)
         addSubview(tile)
         bringSubviewToFront(tile)
+        tilesViewStorage.insertTile(tile: tile, position: position)
+        animationEngine.addTileToBoard(tile: tile)
+    }
+
+    func moveOneTile(from: TilePosition, to: TilePosition, value: Int) {
+        guard let startTile = tilesViewStorage.getTile(position: from) else {
+            assert(false, "placeholder error")
+        }
+        let endTile = tilesViewStorage.getTile(position: to)
+
+        // Make the frame
+        var finalFrame = startTile.frame
+        finalFrame.origin.x = tilePadding + CGFloat(to.column) * (tileSideLength + tilePadding)
+        finalFrame.origin.y = tilePadding + CGFloat(to.row) * (tileSideLength + tilePadding)
+
+        // Update board state
+        tilesViewStorage.removeTile(position: from)
+        tilesViewStorage.insertTile(tile: startTile, position: to)
+
+        animationEngine.move(startTile: startTile, endTile: endTile, finalFrame: finalFrame, value: value)
+    }
+
+    func reset() {
+        tilesViewStorage.reset()
+    }
+}
+
+final class TilesViewStorage {
+    private var tiles: Dictionary<TilePosition, TileView> = [:]
+
+    func insertTile(tile: TileView, position: TilePosition) {
+        tiles[position] = tile
+    }
+
+    func getTile(position: TilePosition) -> TileView? {
+        return tiles[position]
+    }
+
+    func removeTile(position: TilePosition) {
+        tiles.removeValue(forKey: position)
+    }
+
+    func reset() {
+        tiles.forEach { $0.value.removeFromSuperview() }
+        tiles.removeAll()
     }
 }

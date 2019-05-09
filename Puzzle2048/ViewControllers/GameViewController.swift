@@ -12,7 +12,9 @@ final class GameViewController: UIViewController {
 
     private var needUpdateConstraints = true
     private let dimension = 4
+    private let threshold = 2048
     private let tilePadding: CGFloat = 8
+    private var currentGameSession: GameSession?
 
     private lazy var gameboardView: GameboardView = {
         let gameboardView = GameboardView(dimension: dimension,
@@ -43,7 +45,6 @@ final class GameViewController: UIViewController {
         return button
     }()
 
-
     override func loadView() {
         super.loadView()
 
@@ -54,17 +55,12 @@ final class GameViewController: UIViewController {
         super.viewDidLoad()
 
         configureUI()
-        setTestData()
+        subscribeOnEvents()
+        startButtonClicked()
     }
 
-    private func setTestData() {
-        var value = 2
-        for row in 0..<dimension {
-            for column in 0..<dimension {
-                gameboardView.insertTile(row: row, column: column, value: value)
-                value *= 2
-            }
-        }
+    private func subscribeOnEvents() {
+        startButton.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
     }
 
     private func configureUI() {
@@ -75,6 +71,17 @@ final class GameViewController: UIViewController {
         view.addSubview(gameboardView)
         view.addSubview(startButton)
         view.setNeedsUpdateConstraints()
+    }
+
+    @objc
+    func startButtonClicked() {
+        currentGameSession?.finishGame()
+        let gameSession: GameSession = GameSessionImp(dimension: dimension,
+                                                      threshold: threshold,
+                                                      gameSessionDelegate: self,
+                                                      gameboardView: gameboardView)
+        gameSession.startGame()
+        currentGameSession = gameSession
     }
 
     override func updateViewConstraints() {
@@ -92,4 +99,8 @@ final class GameViewController: UIViewController {
 
         super.updateViewConstraints()
     }
+}
+
+extension GameViewController: GameSessionDelegate {
+    
 }
