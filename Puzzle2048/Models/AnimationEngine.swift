@@ -30,7 +30,7 @@ final class AnimationEngine {
             tile.layer.setAffineTransform(CGAffineTransform(scaleX: self.tilePopMaxScale, y: self.tilePopMaxScale))
         }, completion: { _ in
             // Shrink the tile after it 'pops'
-            UIView.animate(withDuration: self.tileContractTime, animations: { () -> Void in
+            UIView.animate(withDuration: self.tileContractTime, animations: {
                 tile.layer.setAffineTransform(CGAffineTransform.identity)
             })
         })
@@ -38,6 +38,9 @@ final class AnimationEngine {
 
     func move(startTile: TileView, endTile: TileView?, finalFrame: CGRect, value: Int) {
         let shouldPop = endTile != nil
+
+        startTile.layer.setAffineTransform(CGAffineTransform.identity)
+
         UIView.animate(withDuration: perSquareSlideDuration,
                        delay: 0.0,
                        options: UIView.AnimationOptions.beginFromCurrentState,

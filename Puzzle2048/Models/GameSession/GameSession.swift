@@ -23,7 +23,7 @@ final class GameSessionImp: GameSession {
     private let maxCommands = 100
     private weak var delegate: GameSessionDelegate!
     private weak var gameboardView: GameboardView!
-    private var queue: [MoveCommand] = []
+    private var stepChangesGameboardModel: SquareGameboard
 
     var gameboardModel: SquareGameboard
 
@@ -36,9 +36,15 @@ final class GameSessionImp: GameSession {
         self.gameboardView = gameboardView
         delegate = gameSessionDelegate
         gameboardModel = SquareGameboard(dimension: dimension, initialValue: .empty)
+        stepChangesGameboardModel = SquareGameboard(dimension: dimension, initialValue: .empty)
     }
 
     func startGame() {
+        // TODO: Remove test data
+//        insertTile(position: TilePosition(row: 0, column: 0), value: 8)
+//        insertTile(position: TilePosition(row: 0, column: 1), value: 2)
+//        insertTile(position: TilePosition(row: 0, column: 2), value: 2)
+//        insertTile(position: TilePosition(row: 0, column: 3), value: 4)
         insertTileAtRandomLocation(withValue: 2)
         insertTileAtRandomLocation(withValue: 2)
     }
@@ -103,16 +109,23 @@ extension GameSessionImp {
         let positions = direction == .up || direction == .left ? gameboardModel.positions : gameboardModel.positions.reversed()
         for currentPosition in positions {
             if case .tile(var value) = gameboardModel[currentPosition] {
+
+                let currentValue = value
                 let newPosition = newPositionForTile(currentPosition: currentPosition, direction: direction, value: &value)
 
                 if currentPosition == newPosition { continue }
                 gameboardModel[currentPosition] = .empty
+
+                if currentValue != value {
+                    stepChangesGameboardModel[newPosition] = .tile(value)
+                }
+
                 gameboardModel[newPosition] = .tile(value)
                 gameboardView.moveOneTile(from: currentPosition, to: newPosition, value: value)
                 changes = true
             }
         }
-
+        stepChangesGameboardModel.setAll(to: .empty)
         return changes
     }
 
@@ -121,12 +134,16 @@ extension GameSessionImp {
         var rowCursor = currentPosition.row
         var columnCursor = currentPosition.column
 
+        let needIncreaseValue = { [unowned self] (nextPosition: TilePosition, value: Int) -> Bool in
+            return self.gameboardModel[nextPosition] == .tile(value) && self.stepChangesGameboardModel[nextPosition] != .tile(value)
+        }
+
         switch direction {
         case .up:
             var nextPosition = TilePosition(row: rowCursor - 1, column: currentPosition.column)
             while canMove(value: value, nextPosition: nextPosition) {
                 rowCursor -= 1
-                if gameboardModel[nextPosition] == .tile(value) {
+                if needIncreaseValue(nextPosition, value) {
                     value *= 2
                     break
                 }
@@ -136,7 +153,7 @@ extension GameSessionImp {
             var nextPosition = TilePosition(row: rowCursor + 1, column: currentPosition.column)
             while canMove(value: value, nextPosition: nextPosition) {
                 rowCursor += 1
-                if gameboardModel[nextPosition] == .tile(value) {
+                if needIncreaseValue(nextPosition, value) {
                     value *= 2
                     break
                 }
@@ -146,7 +163,7 @@ extension GameSessionImp {
             var nextPosition = TilePosition(row: currentPosition.row, column: columnCursor - 1)
             while canMove(value: value, nextPosition: nextPosition) {
                 columnCursor -= 1
-                if gameboardModel[nextPosition] == .tile(value) {
+                if needIncreaseValue(nextPosition, value) {
                     value *= 2
                     break
                 }
@@ -156,7 +173,7 @@ extension GameSessionImp {
             var nextPosition = TilePosition(row: currentPosition.row, column: columnCursor + 1)
             while canMove(value: value, nextPosition: nextPosition) {
                 columnCursor += 1
-                if gameboardModel[nextPosition] == .tile(value) {
+                if needIncreaseValue(nextPosition, value) {
                     value *= 2
                     break
                 }
@@ -169,7 +186,8 @@ extension GameSessionImp {
     private func canMove(value: Int, nextPosition: TilePosition) -> Bool {
         return nextPosition.column < dimension && nextPosition.row < dimension &&
             nextPosition.column >= 0 && nextPosition.row >= 0 &&
-            (gameboardModel[nextPosition] == .empty || gameboardModel[nextPosition] == .tile(value))
+            (gameboardModel[nextPosition] == .empty || gameboardModel[nextPosition] == .tile(value) &&
+                stepChangesGameboardModel[nextPosition] != .tile(value))
     }
 
 

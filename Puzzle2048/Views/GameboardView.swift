@@ -80,9 +80,12 @@ final class GameboardView: UIView {
         let endTile = tilesViewStorage.getTile(position: to)
 
         // Make the frame
-        var finalFrame = startTile.frame
-        finalFrame.origin.x = tilePadding + CGFloat(to.column) * (tileSideLength + tilePadding)
-        finalFrame.origin.y = tilePadding + CGFloat(to.row) * (tileSideLength + tilePadding)
+        let x = tilePadding + CGFloat(to.column) * (tileSideLength + tilePadding)
+        let y = tilePadding + CGFloat(to.row) * (tileSideLength + tilePadding)
+        let finalFrame = CGRect(x: x, y: y, width: tileSideLength, height: tileSideLength)
+        if finalFrame.width != 75.75 {
+            print(finalFrame.width)
+        }
 
         // Update board state
         tilesViewStorage.removeTile(position: from)
