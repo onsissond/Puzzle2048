@@ -75,6 +75,7 @@ final class GameboardView: UIView {
     func moveOneTile(from: TilePosition, to: TilePosition, value: Int) {
         guard let startTile = tilesViewStorage.getTile(position: from) else {
             assert(false, "placeholder error")
+            return
         }
 
         let endTile = tilesViewStorage.getTile(position: to)
