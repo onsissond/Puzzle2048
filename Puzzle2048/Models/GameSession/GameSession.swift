@@ -9,7 +9,9 @@
 import Foundation
 
 protocol GameSession {
+    var gameboardModel: SquareGameboard { get }
     func startGame()
+    func continueGame(gameboardModel: SquareGameboard)
     func finishGame()
     func addCommand(_ command: MoveCommand)
 }
@@ -21,9 +23,9 @@ final class GameSessionImp: GameSession {
     private let maxCommands = 100
     private weak var delegate: GameSessionDelegate!
     private weak var gameboardView: GameboardView!
-    private var gameboardModel: SquareGameboard<TileObject>
     private var queue: [MoveCommand] = []
-    private var positions: [TilePosition] = []
+
+    var gameboardModel: SquareGameboard
 
     init(dimension: Int,
          threshold: Int,
@@ -34,7 +36,6 @@ final class GameSessionImp: GameSession {
         self.gameboardView = gameboardView
         delegate = gameSessionDelegate
         gameboardModel = SquareGameboard(dimension: dimension, initialValue: .empty)
-        positions = createPositions()
     }
 
     func startGame() {
@@ -42,12 +43,23 @@ final class GameSessionImp: GameSession {
         insertTileAtRandomLocation(withValue: 2)
     }
 
+    func continueGame(gameboardModel: SquareGameboard) {
+        self.gameboardModel = gameboardModel
+        for position in gameboardModel.positions {
+            switch gameboardModel[position] {
+            case .tile(let value):
+                gameboardView.insertTile(position: position, value: value)
+            default: break
+            }
+        }
+    }
+
     func finishGame() {
         gameboardView.reset()
     }
 
     func insertTile(position: TilePosition, value: Int) {
-        gameboardModel[position.column, position.row] = .tile(value)
+        gameboardModel[position] = .tile(value)
         gameboardView.insertTile(position: position, value: value)
     }
 
@@ -78,11 +90,9 @@ extension GameSessionImp {
 
     private func gameboardEmptySpots() -> [TilePosition] {
         var buffer: [TilePosition] = []
-        for i in 0..<dimension {
-            for j in 0..<dimension {
-                if case .empty = gameboardModel[i, j] {
-                    buffer += [TilePosition(row: j, column: i)]
-                }
+        for position in gameboardModel.positions {
+            if case .empty = gameboardModel[position] {
+                buffer += [position]
             }
         }
         return buffer
@@ -90,14 +100,14 @@ extension GameSessionImp {
 
     private func performMove(direction: MoveDirection) -> Bool {
         var changes = false
-        let positions = direction == .up || direction == .left ? self.positions : self.positions.reversed()
+        let positions = direction == .up || direction == .left ? gameboardModel.positions : gameboardModel.positions.reversed()
         for currentPosition in positions {
             if case .tile(var value) = gameboardModel[currentPosition] {
                 let newPosition = newPositionForTile(currentPosition: currentPosition, direction: direction, value: &value)
 
                 if currentPosition == newPosition { continue }
-                gameboardModel[currentPosition.column, currentPosition.row] = .empty
-                gameboardModel[newPosition.column, newPosition.row] = .tile(value)
+                gameboardModel[currentPosition] = .empty
+                gameboardModel[newPosition] = .tile(value)
                 gameboardView.moveOneTile(from: currentPosition, to: newPosition, value: value)
                 changes = true
             }
@@ -162,18 +172,9 @@ extension GameSessionImp {
             (gameboardModel[nextPosition] == .empty || gameboardModel[nextPosition] == .tile(value))
     }
 
-    private func createPositions() -> [TilePosition] {
-        var positions: [TilePosition] = []
-        for i in 0..<dimension {
-            for j in 0..<dimension {
-                positions.append(TilePosition(row: i, column: j))
-            }
-        }
-        return positions
-    }
 
     private func checkWin() -> Bool {
-        for position in positions {
+        for position in gameboardModel.positions {
             if gameboardModel[position] == .tile(threshold) {
                 return true
             }
@@ -183,7 +184,7 @@ extension GameSessionImp {
 
     private func checkLose() -> Bool {
         if gameboardEmptySpots().isEmpty {
-            for position in positions {
+            for position in gameboardModel.positions {
                 if case .tile(var value) = gameboardModel[position] {
                     for direction in MoveDirection.allCases {
                         if newPositionForTile(currentPosition: position, direction: direction, value: &value) != position {

@@ -15,6 +15,7 @@ final class GameViewController: UIViewController {
     private let threshold = 2048
     private let tilePadding: CGFloat = 8
     private var currentGameSession: GameSession?
+    private let gameSessionStorage: GameSessionStorage = UserDefaultsGameSessionStorage()
 
     private lazy var gameboardView: GameboardView = {
         let gameboardView = GameboardView(dimension: dimension,
@@ -56,12 +57,41 @@ final class GameViewController: UIViewController {
 
         configureUI()
         subscribeOnEvents()
-        startButtonClicked()
         setupSwipeControls()
+        startGame()
+    }
+
+    private func startGame() {
+        if let gameboardModel = gameSessionStorage.restore() {
+            let gameSession: GameSession = GameSessionImp(dimension: dimension,
+                                                          threshold: threshold,
+                                                          gameSessionDelegate: self,
+                                                          gameboardView: gameboardView)
+            gameSession.continueGame(gameboardModel: gameboardModel)
+            currentGameSession = gameSession
+        } else {
+            startButtonClicked()
+        }
+    }
+
+    @objc
+    private func saveGame() {
+        if let session = currentGameSession {
+            gameSessionStorage.save(gameboard: session.gameboardModel)
+        }
     }
 
     private func subscribeOnEvents() {
         startButton.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(saveGame),
+                                               name: UIApplication.willResignActiveNotification,
+                                               object: nil)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
     }
 
     private func configureUI() {

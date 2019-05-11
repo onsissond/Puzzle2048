@@ -25,6 +25,7 @@
 		52FEA34522843DB10074F405 /* SquareGameboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA34422843DB10074F405 /* SquareGameboard.swift */; };
 		52FEA34A22844AEE0074F405 /* MoveDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA34922844AEE0074F405 /* MoveDirection.swift */; };
 		52FEA34C22844CD80074F405 /* MoveCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA34B22844CD80074F405 /* MoveCommand.swift */; };
+		52FEA34F2286AEC10074F405 /* GameSessionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FEA34E2286AEC10074F405 /* GameSessionStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		52FEA34422843DB10074F405 /* SquareGameboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareGameboard.swift; sourceTree = "<group>"; };
 		52FEA34922844AEE0074F405 /* MoveDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveDirection.swift; sourceTree = "<group>"; };
 		52FEA34B22844CD80074F405 /* MoveCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveCommand.swift; sourceTree = "<group>"; };
+		52FEA34E2286AEC10074F405 /* GameSessionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,14 +168,12 @@
 		52FEA323228372480074F405 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				52FEA34D2286AEA60074F405 /* GameSession */,
 				52FEA34822844AE10074F405 /* Support */,
 				52FEA3262283729A0074F405 /* AppearanceProvider.swift */,
 				52FEA33A228432C10074F405 /* AnimationEngine.swift */,
 				52FEA33C228434240074F405 /* TilePosition.swift */,
-				52FEA33E228438650074F405 /* GameSession.swift */,
-				52FEA34022843B590074F405 /* GameSessionDelegate.swift */,
 				52FEA34222843D780074F405 /* TileObject.swift */,
-				52FEA34422843DB10074F405 /* SquareGameboard.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -194,6 +194,17 @@
 				52FEA34B22844CD80074F405 /* MoveCommand.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		52FEA34D2286AEA60074F405 /* GameSession */ = {
+			isa = PBXGroup;
+			children = (
+				52FEA33E228438650074F405 /* GameSession.swift */,
+				52FEA34022843B590074F405 /* GameSessionDelegate.swift */,
+				52FEA34E2286AEC10074F405 /* GameSessionStorage.swift */,
+				52FEA34422843DB10074F405 /* SquareGameboard.swift */,
+			);
+			path = GameSession;
 			sourceTree = "<group>";
 		};
 		91F314DA395E05EA2D87B2A2 /* Pods */ = {
@@ -284,6 +295,7 @@
 				52FEA3272283729A0074F405 /* AppearanceProvider.swift in Sources */,
 				52FEA34122843B590074F405 /* GameSessionDelegate.swift in Sources */,
 				52FEA33D228434240074F405 /* TilePosition.swift in Sources */,
+				52FEA34F2286AEC10074F405 /* GameSessionStorage.swift in Sources */,
 				52FEA332228410440074F405 /* GameboardView.swift in Sources */,
 				52FEA33B228432C10074F405 /* AnimationEngine.swift in Sources */,
 				52FEA339228432430074F405 /* UIButtonExtensions.swift in Sources */,

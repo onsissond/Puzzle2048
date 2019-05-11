@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TilePosition: Hashable {
+struct TilePosition: Codable, Hashable {
     let row: Int
     let column: Int
 }
